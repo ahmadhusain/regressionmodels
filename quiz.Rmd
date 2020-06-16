@@ -6,21 +6,21 @@ This quiz is part of Algoritma Academy assessment process. Congratulations on co
 
 In this quiz, you will be using criminologist dataset (`crime`) stored under the `data_input` folder. If you have been following along in the course you can use the one that has already been loaded in the environment or you can run the following chunk in your RMarkdown to make sure we are using a same column names:
 
-```
+```{r}
 crime <- read.csv("data_input/crime.csv") %>% 
    select(-X) 
 colnames(crime) <- c("percent_m", "is_south", "mean_education", "police_exp60", "police_exp59", "labour_participation", "m_per1000f", "state_pop", "nonwhites_per1000", "unemploy_m24", "unemploy_m39", "gdp", "inequality", "prob_prison", "time_prison", "crime_rate")
 ```
 
 To make sure you have loaded the data correctly, do a simple inspection of the data. Try to peek in using `head` or `tail` and see if the columns have been stored in its appropriate data types.
-```
+```{r}
 # your code here
 
 ```
 
 Among all variables within our `crime` dataset, there is a `crime_rate` variable that describes the measure of crime rate of the United States in 1960 from different states. Imagine you're working as a government analyst and would like to see how social-economic conditions could reflect on the crime rate in a state. Recall how we can inspect the correlation for each variable using `cor` or `ggcorr` from `GGally` package. Try it out on your own and see what are the possible predictor variables for our `crime_rate` variable.
 
-```
+```{r}
 # your code here
 
 ```
@@ -38,7 +38,7 @@ ___
 
 From the data exploration process and the correlation information of our dataset, it is known that not all variables show a strong correlation with `crime_rate` variable. Let's try to build a simple linear model using one of the highly correlated variables: `police_exp59`. Create a regression model using `lm()` function to predict `crime_rate` using `police_exp59` from our dataset and assign it to an object named `model_crime`.
 
-```
+```{r}
 # your code here
 
 ```
@@ -59,7 +59,7 @@ ___
 
 Based on the R-squared alone, our `model_crime` might indicate a poor fit. The R-squared of `model_crime` approximates 0.44, which ideally needs to be improved upon by, for example, adding more predictor variables. One of the techniques for selecting predictor variables is using stepwise regression algorithm. Use the `step()` function with `direction="backward"` parameter and store the best model estimate under the `model_step` object.
 
-```
+```{r}
 # your code here
 
 ```
@@ -75,7 +75,7 @@ ___
 
 One of the assumptions for linear regression stated that the error obtained from the model must be distributed normally around the mean of 0. You will need to validate our normality assumption from `model_step` using `shapiro.test()` function. This function requires us to pass in the residuals of our model.
 
-```
+```{r}
 # your code here
 
 ```
@@ -104,7 +104,7 @@ $H_0$: Error is considered Homoscedastic
 
 $H_1$: Error is considered Heteroscedastic  
 
-```
+```{r}
 # your code here
 
 ```
@@ -120,7 +120,7 @@ ___
 
 Using VIF value, we can determine whether or not there are multicollinearity between predictor variables. A high VIF value indicates a high correlation between the variables. You can use the `vif` function from `car` package from our model. Pass in our `model_step` object into the function and see if there's a multicollinearity in the model.
 
-```
+```{r}
 # your code here
 
 ```
@@ -136,14 +136,14 @@ ___
 
 Along this quiz session, you have performed statistical tests to make sure the model passed the assumptions of a linear regression model. Now imagine you were given a new dataset that records the same socio-economic variables from different observations. The data is stored under `crime_test.csv`, please read in the data and store it under an object named `crime_test`. Next, create a prediction using the new data using our `model_step` object. You can store the prediction values under a new column in the `crime_test` data frame.
 
-```
+```{r}
 # your code here
 
 ```
 
 Now pay attention to the new dataset provided. Among the variables you should see a `crime_rate` column describing the real crime rate value of the observations. Within the workshop you have learned some metrics to evaluate our model performance. Try to calculate the `MSE` of our `model_step` prediction. You can use the `MSE` function from `MLMetrics` package by passing in `y_true` and `y_pred` parameter.
 
-```
+```{r}
 # your code here
 
 ```
