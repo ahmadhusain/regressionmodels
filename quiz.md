@@ -4,11 +4,10 @@ This quiz is part of Algoritma Academy assessment process. Congratulations on co
 
 ## Data Exploration
 
-In this quiz, you will be using criminologist dataset (`crime`). If you have been following along in the course you can use the one that has already been loaded in the environment or you can run the following chunk in your RMarkdown to make sure we are using a same column names:
+In this quiz, you will be using criminologist dataset (`crime`). You can run the following chunk in your RMarkdown to make sure we are using the same dataset:
 
 ```
-crime <- read.csv("data_input/crime.csv") 
-colnames(crime) <- c("percent_m", "is_south", "mean_education", "police_exp60", "police_exp59", "labour_participation", "m_per1000f", "state_pop", "nonwhites_per1000", "unemploy_m24", "unemploy_m39", "gdp", "inequality", "prob_prison", "time_prison", "crime_rate")
+crime <- read.csv("crime.csv") 
 ```
 
 To make sure you have loaded the data correctly, do a simple inspection of the data. Try to peek in using `head` or `tail` and see if the columns have been stored in its appropriate data types.
