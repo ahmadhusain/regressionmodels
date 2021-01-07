@@ -4,11 +4,10 @@ This quiz is part of Algoritma Academy assessment process. Congratulations on co
 
 ## Data Exploration
 
-In this quiz, you will be using criminologist dataset (`crime`) stored under the `data_input` folder. If you have been following along in the course you can use the one that has already been loaded in the environment or you can run the following chunk in your RMarkdown to make sure we are using a same column names:
+In this quiz, you will be using criminologist dataset (`crime`). If you have been following along in the course you can use the one that has already been loaded in the environment or you can run the following chunk in your RMarkdown to make sure we are using a same column names:
 
 ```
-crime <- read.csv("data_input/crime.csv") %>% 
-   select(-X) 
+crime <- read.csv("data_input/crime.csv") 
 colnames(crime) <- c("percent_m", "is_south", "mean_education", "police_exp60", "police_exp59", "labour_participation", "m_per1000f", "state_pop", "nonwhites_per1000", "unemploy_m24", "unemploy_m39", "gdp", "inequality", "prob_prison", "time_prison", "crime_rate")
 ```
 
@@ -43,7 +42,7 @@ From the data exploration process and the correlation information of our dataset
 
 ```
 ___
-2. Which of the following best describes the slope?**
+2. Which of the following best describes the slope?
   - [ ] It's a negative slope, and is statistically insignificant (P-value higher than 0.05)
   - [ ] It's a positive slope, and is statistically significant (P-value lower than 0.05)
   - [ ] It's a positive slope, and is statistically insignificant (P-value higher than 0.05)
@@ -57,7 +56,7 @@ ___
 
 ## Feature Selection using Stepwise Regression
 
-Based on the R-squared alone, our `model_crime` might indicate a poor fit. The R-squared of `model_crime` approximates 0.44, which ideally needs to be improved upon by, for example, adding more predictor variables. One of the techniques for selecting predictor variables is using stepwise regression algorithm. Use the `step()` function with `direction="backward"` parameter and store the best model estimate under the `model_step` object.
+The R-squared of `model_crime` approximates 0.44, which ideally needs to be improved upon by, for example, adding more predictor variables. One of the techniques for selecting predictor variables is using stepwise regression algorithm. Use the `step()` function with `direction="backward"` parameter and store the best model estimate under the `model_step` object.
 
 ```
 # your code here
