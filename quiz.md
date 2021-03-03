@@ -23,7 +23,7 @@ Among all variables within our `crime` dataset, there is a `crime_rate` variable
 
 ```
 
-Based on the result, you will know each variable correlates with the `crime_rate` variable. Referring to that result, we can perform a preliminary variable selection to select suitable predictor variables.
+Based on the result, you will know how each variable correlates with the `crime_rate` variable. Referring to that result, we can perform a preliminary variable selection to select suitable predictor variables.
 ___
 1. Which variable has little to no correlation with our `crime_rate` variable and might not be suitable as a predictor?
   - [ ] crime_rate
