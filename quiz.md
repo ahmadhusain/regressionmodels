@@ -1,6 +1,6 @@
 # Regression Model Quiz
 
-This quiz is part of Algoritma Academy assessment process. Congratulations on completing the Regression Model course! We will conduct an assessment quiz to test practical regression model techniques you have learned on the course. The quiz is expected to be taken in the classroom, please contact our team of instructors if you missed the chance to take it in class.
+This quiz is part of Algoritma Academy assessment process. Congratulations on completing the Regression Model course! We will conduct an assessment quiz to test the practical regression model techniques that you have learned on the course. The quiz is expected to be taken in the classroom, please contact our team of instructors if you missed the chance to take it in class.
 
 ## Data Exploration
 
@@ -16,16 +16,16 @@ To make sure you have loaded the data correctly, do a simple inspection of the d
 
 ```
 
-Among all variables within our `crime` dataset, there is a `crime_rate` variable that describes the measure of crime rate of the United States in 1960 from different states. Imagine you're working as a government analyst and would like to see how social-economic conditions could reflect on the crime rate in a state. Recall how we can inspect the correlation for each variable using `cor` or `ggcorr` from `GGally` package. Try it out on your own and see what are the possible predictor variables for our `crime_rate` variable.
+Among all variables within our `crime` dataset, there is a `crime_rate` variable that describes the measure of crime rate for each State within the United States in 1960. Imagine you are working as a government analyst and would like to see how social-economic conditions could reflect on the crime rate of a State. Recall how we can inspect the correlation for each variable using `cor` or `ggcorr` from `GGally` package. Try it out on your own and see what are the possible predictor variables for our `crime_rate` variable.
 
 ```
 # your code here
 
 ```
 
-Based on the result of the previous chunk, you should know each variable's correlation with `crime_rate` variable. Referring to the value, we can perform a preliminary variable selection for a suitable predictor variable.
+Based on the result, you will know how each variable correlates with the `crime_rate` variable. Referring to that result, we can perform a preliminary variable selection to select suitable predictor variables.
 ___
-1. Which variable has little to no correlation with our `crime_rate` variable and might not be suitable as a predictor variable?
+1. Which variable has little to no correlation with our `crime_rate` variable and might not be suitable as a predictor?
   - [ ] crime_rate
   - [ ] police_exp59
   - [ ] unemploy_m39
@@ -34,7 +34,7 @@ ___
 
 ## Building Linear Regression    
 
-From the data exploration process and the correlation information of our dataset, it is known that not all variables show a strong correlation with `crime_rate` variable. Let's try to build a simple linear model using one of the highly correlated variables: `police_exp59`. Create a regression model using `lm()` function to predict `crime_rate` using `police_exp59` from our dataset and assign it to an object named `model_crime`.
+From the data exploration process, it is known that not all variables show a strong correlation with `crime_rate` variable. Let's try to build a simple linear model using one of the highly correlated variables: `police_exp59`. Create a regression model using `lm()` function to predict `crime_rate` using `police_exp59` from our dataset and assign it to an object named `model_crime`. Check the summary of that model.
 
 ```
 # your code here
@@ -55,7 +55,7 @@ ___
 
 ## Feature Selection using Stepwise Regression
 
-The R-squared of `model_crime` approximates 0.44, which ideally needs to be improved upon by, for example, adding more predictor variables. One of the techniques for selecting predictor variables is using stepwise regression algorithm. Use the `step()` function with `direction="backward"` parameter and store the best model estimate under the `model_step` object.
+The R-squared of `model_crime` approximates 0.44, which ideally needs to be improved upon, for example, by adding more predictor variables. One of the techniques for selecting predictor variables is using stepwise regression algorithm. Use the `step()` function with `direction="backward"` and store the best model under the `model_step` object.
 
 ```
 # your code here
@@ -116,7 +116,7 @@ ___
 
 ## Variance Inflation Factor
 
-Using VIF value, we can determine whether or not there are multicollinearity between predictor variables. A high VIF value indicates a high correlation between the variables. You can use the `vif` function from `car` package from our model. Pass in our `model_step` object into the function and see if there's a multicollinearity in the model.
+Using VIF value, we can determine whether or not there are multicollinearity between predictor variables. A high VIF value indicates a high correlation between the variables. You can use the `vif` function from `car` package. Pass in our `model_step` object into the function and see if there's a multicollinearity in the model.
 
 ```
 # your code here
@@ -127,26 +127,26 @@ ___
   - [ ] inequality does not significantly affect crime_rate
   - [ ] An increase of 1 value on mean_education causes the value of crime_rate to increase by 4.1
   - [ ] Multicollinearity is not present in our model because the VIF values for all variables are below 10 
-  - [ ] Variables with multicollinearity should not be removed from model
+  - [ ] Variables with multicollinearity should not be removed from the model
   ___
 
 ## Predicting Unseen Data
 
-Along this quiz session, you have performed statistical tests to make sure the model passed the assumptions of a linear regression model. Now imagine you were given a new dataset that records the same socio-economic variables from different observations. The data is stored under `crime_test.csv`, please read in the data and store it under an object named `crime_test`. Next, create a prediction using the new data using our `model_step` object. You can store the prediction values under a new column in the `crime_test` data frame.
+You have performed statistical tests to make sure the model passed the assumptions of a linear regression model. Now imagine you were given a new dataset that records the same socio-economic variables from different observations. The data is stored under `crime_test.csv`, please read the data and store it under an object named `crime_test`. Next, predict the crime rate for that new data using `model_step`. You can store your prediction values under a new column in the `crime_test` data.
 
 ```
 # your code here
 
 ```
 
-Now pay attention to the new dataset provided. Among the variables you should see a `crime_rate` column describing the real crime rate value of the observations. Within the workshop you have learned some metrics to evaluate our model performance. Try to calculate the `MSE` of our `model_step` prediction. You can use the `MSE` function from `MLMetrics` package by passing in `y_true` and `y_pred` parameter.
+Now pay attention to the `crime_test` data. Among the variables you should see a `crime_rate` column describing the real crime rate for each observation. Within the workshop you have learned some metrics to evaluate our model performance. Try to calculate the Mean Squared Error (`MSE`) of our `model_step` prediction. You can use the `MSE` function from `MLMetrics` package by passing in `y_true` and `y_pred` parameter.
 
 ```
 # your code here
 
 ```
 ___
-8. What is the MSE value of the crime_test prediction result? (round to two decimal points)    
+8. What is the MSE value of the crime_test prediction? (round to two decimal points)    
   - [ ] 55027.7
   - [ ] 46447.42
   - [ ] 45269.15
